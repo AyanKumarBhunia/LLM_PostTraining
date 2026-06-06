@@ -1,0 +1,157 @@
+{% comment %}
+  Tree visualization — why this tutorial exists, and the pipeline as connected questions.
+  Nodes are clickable; each step answers one question.
+{% endcomment %}
+
+<div class="labs-tree-wrapper">
+  <h2 class="labs-tree-title">Basics of Rendering</h2>
+  <p class="labs-tree-subtitle">A mental model of classical rendering. One pipeline, one concept per step. Click a node to open.</p>
+
+  <div class="labs-tree">
+    <div class="labs-tree-node labs-tree-root">
+      <a href="{{ '/posts/hands-on-rendering-labs-roadmap/' | relative_url }}">Roadmap</a>
+      <span class="labs-tree-desc">How does the pipeline fit together?</span>
+    </div>
+
+    <div class="labs-tree-connector"></div>
+
+    <div class="labs-tree-row">
+      <div class="labs-tree-node">
+        <a href="{{ '/posts/introduction-to-neural-rendering/' | relative_url }}">3D Rendering Basics</a>
+        <span class="labs-tree-desc">What is 3D rendering?</span>
+      </div>
+      <div class="labs-tree-arrow">→</div>
+      <div class="labs-tree-node">
+        <a href="{{ '/posts/hands-on-rendering-lab-0-scene-representation/' | relative_url }}">Lab 0</a>
+        <span class="labs-tree-desc">What is a scene made of?</span>
+      </div>
+      <div class="labs-tree-arrow">→</div>
+      <div class="labs-tree-node">
+        <a href="{{ '/posts/hands-on-rendering-lab-1-camera-rays-pytorch/' | relative_url }}">Lab 1</a>
+        <span class="labs-tree-desc">What does each pixel see?</span>
+      </div>
+      <div class="labs-tree-arrow">→</div>
+      <div class="labs-tree-node">
+        <a href="{{ '/posts/hands-on-rendering-lab-2-ray-triangle-intersection/' | relative_url }}">Lab 2</a>
+        <span class="labs-tree-desc">Does this ray hit anything?</span>
+      </div>
+      <div class="labs-tree-arrow">→</div>
+      <div class="labs-tree-node">
+        <a href="{{ '/posts/hands-on-rendering-lab-3-surface-normals/' | relative_url }}">Lab 3</a>
+        <span class="labs-tree-desc">Which way does the surface face?</span>
+      </div>
+      <div class="labs-tree-arrow">→</div>
+      <div class="labs-tree-node">
+        <a href="{{ '/posts/hands-on-rendering-lab-4-direct-lighting/' | relative_url }}">Lab 4</a>
+        <span class="labs-tree-desc">How do we turn geometry into brightness?</span>
+      </div>
+      <div class="labs-tree-arrow">→</div>
+      <div class="labs-tree-node">
+        <a href="{{ '/posts/hands-on-rendering-lab-5-minimal-path-tracing/' | relative_url }}">Lab 5</a>
+        <span class="labs-tree-desc">What about indirect light?</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.labs-tree-wrapper {
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--card-bg, #f8f9fa);
+  border: 1px solid var(--border-color, #dee2e6);
+}
+
+[data-mode="dark"] .labs-tree-wrapper {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+[data-mode="dark"] .labs-tree-node:not(.labs-tree-root) {
+  background: rgba(13, 110, 253, 0.2);
+  border-color: #0d6efd;
+}
+
+.labs-tree-title {
+  font-size: 1.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.labs-tree-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted, #6c757d);
+  margin-bottom: 1.25rem;
+}
+
+.labs-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.labs-tree-root {
+  background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%) !important;
+  border-color: #5a32a3 !important;
+}
+
+.labs-tree-root a { color: #fff !important; }
+.labs-tree-root .labs-tree-desc { color: rgba(255,255,255,0.9) !important; }
+
+.labs-tree-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  min-width: 100px;
+  border-radius: 8px;
+  background: var(--highlight-bg, #e7f3ff);
+  border: 2px solid var(--highlight-border, #0d6efd);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.labs-tree-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.labs-tree-node a {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--link-color, #0d6efd);
+}
+
+.labs-tree-node a:hover { text-decoration: underline; }
+
+.labs-tree-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted, #6c757d);
+  margin-top: 0.2rem;
+}
+
+.labs-tree-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.labs-tree-arrow {
+  color: var(--text-muted, #6c757d);
+  font-weight: bold;
+}
+
+.labs-tree-connector {
+  width: 2px;
+  height: 12px;
+  background: var(--text-muted, #6c757d);
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .labs-tree-row { flex-direction: column; }
+  .labs-tree-arrow { transform: rotate(90deg); }
+}
+</style>

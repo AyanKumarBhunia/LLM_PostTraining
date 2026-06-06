@@ -1,0 +1,167 @@
+{% comment %}
+  Game Rendering series roadmap — conceptual pipeline for ML researchers.
+  Nodes are clickable; each step builds on the previous.
+{% endcomment %}
+
+<div class="game-rendering-tree-wrapper">
+  <h2 class="game-rendering-tree-title">Game Rendering Series</h2>
+  <p class="game-rendering-tree-subtitle">A mental model of real-time rendering. One pipeline, one concept per step. Click a node to open.</p>
+
+  <div class="game-rendering-tree">
+    <div class="game-rendering-tree-node game-rendering-tree-root">
+      <a href="{{ '/posts/game-rendering/' | relative_url }}">Roadmap</a>
+      <span class="game-rendering-tree-desc">How does the pipeline fit together?</span>
+    </div>
+
+    <div class="game-rendering-tree-connector"></div>
+
+    <div class="game-rendering-tree-row">
+      <div class="game-rendering-tree-node">
+        <a href="{{ '/posts/game-rendering-pipeline-overview/' | relative_url }}">Part 2</a>
+        <span class="game-rendering-tree-desc">Assets → Update → Render</span>
+      </div>
+      <div class="game-rendering-tree-arrow">→</div>
+      <div class="game-rendering-tree-node">
+        <a href="{{ '/posts/game-rendering-geometry-camera-projection/' | relative_url }}">Part 3</a>
+        <span class="game-rendering-tree-desc">3D → 2D projection</span>
+      </div>
+      <div class="game-rendering-tree-arrow">→</div>
+      <div class="game-rendering-tree-node">
+        <a href="{{ '/posts/game-rendering-visibility-depth/' | relative_url }}">Part 4</a>
+        <span class="game-rendering-tree-desc">Visibility & depth buffer</span>
+      </div>
+      <div class="game-rendering-tree-arrow">→</div>
+      <div class="game-rendering-tree-node">
+        <a href="{{ '/posts/game-rendering-normals-materials/' | relative_url }}">Part 5</a>
+        <span class="game-rendering-tree-desc">Normals & G-buffer</span>
+      </div>
+      <div class="game-rendering-tree-arrow">→</div>
+      <div class="game-rendering-tree-node">
+        <a href="{{ '/posts/game-rendering-lighting-shadows-reflections/' | relative_url }}">Part 6</a>
+        <span class="game-rendering-tree-desc">Lighting, shadows, reflections</span>
+      </div>
+      <div class="game-rendering-tree-arrow">→</div>
+      <div class="game-rendering-tree-node">
+        <a href="{{ '/posts/game-rendering-temporal-methods/' | relative_url }}">Part 7</a>
+        <span class="game-rendering-tree-desc">TAA, history, motion vectors</span>
+      </div>
+      <div class="game-rendering-tree-arrow">→</div>
+      <div class="game-rendering-tree-node">
+        <a href="{{ '/posts/game-rendering-postprocessing-performance/' | relative_url }}">Part 8</a>
+        <span class="game-rendering-tree-desc">Post-processing & bandwidth</span>
+      </div>
+      <div class="game-rendering-tree-arrow">→</div>
+      <div class="game-rendering-tree-node">
+        <a href="{{ '/posts/game-rendering-volumetrics-special-cases/' | relative_url }}">Part 9</a>
+        <span class="game-rendering-tree-desc">Fog, translucency, special cases</span>
+      </div>
+      <div class="game-rendering-tree-arrow">→</div>
+      <div class="game-rendering-tree-node">
+        <a href="{{ '/posts/game-rendering-future-directions/' | relative_url }}">Part 10</a>
+        <span class="game-rendering-tree-desc">Where is rendering heading?</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.game-rendering-tree-wrapper {
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--card-bg, #f8f9fa);
+  border: 1px solid var(--border-color, #dee2e6);
+}
+
+[data-mode="dark"] .game-rendering-tree-wrapper {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+[data-mode="dark"] .game-rendering-tree-node:not(.game-rendering-tree-root) {
+  background: rgba(25, 135, 84, 0.2);
+  border-color: #198754;
+}
+
+.game-rendering-tree-title {
+  font-size: 1.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.game-rendering-tree-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted, #6c757d);
+  margin-bottom: 1.25rem;
+}
+
+.game-rendering-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.game-rendering-tree-root {
+  background: linear-gradient(135deg, #0d6efd 0%, #198754 100%) !important;
+  border-color: #0a58ca !important;
+}
+
+.game-rendering-tree-root a { color: #fff !important; }
+.game-rendering-tree-root .game-rendering-tree-desc { color: rgba(255,255,255,0.9) !important; }
+
+.game-rendering-tree-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  min-width: 90px;
+  border-radius: 8px;
+  background: var(--highlight-bg, #e8f5e9);
+  border: 2px solid var(--highlight-border, #198754);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.game-rendering-tree-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.game-rendering-tree-node a {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--link-color, #198754);
+}
+
+.game-rendering-tree-node a:hover { text-decoration: underline; }
+
+.game-rendering-tree-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted, #6c757d);
+  margin-top: 0.2rem;
+}
+
+.game-rendering-tree-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.game-rendering-tree-arrow {
+  color: var(--text-muted, #6c757d);
+  font-weight: bold;
+}
+
+.game-rendering-tree-connector {
+  width: 2px;
+  height: 12px;
+  background: var(--text-muted, #6c757d);
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .game-rendering-tree-row { flex-direction: column; }
+  .game-rendering-tree-arrow { transform: rotate(90deg); }
+}
+</style>
